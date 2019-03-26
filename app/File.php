@@ -13,6 +13,7 @@ class File extends Model
         'title',
         'mask',
         'path',
-        'email',
+        'ext',
+        'uploaded_by',
     ];
 }

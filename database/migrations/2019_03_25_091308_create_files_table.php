@@ -18,7 +18,8 @@ class CreateFilesTable extends Migration
             $table->string('title');
             $table->string('mask');
             $table->string('path');
-            $table->string('email');
+            $table->string('ext');
+            $table->string('uploaded_by');
             $table->timestamps();
         });
     }

@@ -44,7 +44,8 @@ class FileController extends Controller
                     'title' => $original_name,
                     'mask' => $mask,
                     'path' => $destinationPath ."/". $mask . "." . $extension,
-                    'email' => $user_email,
+                    'ext' => $extension,
+                    'uploaded_by' => $user_email,
                 );
                 $data_file = New File($data_file);
                 $data_file->save();
@@ -74,7 +75,7 @@ class FileController extends Controller
         $user = $request->user();
         $user_email = $user->email;
 
-        $data = File::where('email',$user_email)->paginate(20);
+        $data = File::where('uploaded_by', $user_email)->paginate(20);
 
         return response()->json([
             'message' => "File List Loaded By $user_email.",
