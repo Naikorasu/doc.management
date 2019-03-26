@@ -31,10 +31,10 @@ class FileController extends Controller
                 $extension = $file->getClientOriginalExtension();
                 $real_path = $file->getRealPath();
                 $size = $file->getSize();
-                $mime = $file->getMimeType();
+                //$mime = $file->getMimeType();
 
                 $fh = New FunctionHelper();
-                $mask = $fh::generate_unique_key($user_email . ";" . $mime . ";" . $real_path . ";" . $extension . ";");
+                $mask = $fh::generate_unique_key($user_email . ";" . $real_path . ";" . $extension . ";");
 
                 $destinationPath = public_path() . "/uploads/";
                 $file->move($destinationPath, $mask . "." . $extension );
@@ -60,7 +60,7 @@ class FileController extends Controller
                 'path' => $path,
                 'real_path' => $real_path,
                 'name' => $original_name,
-                'mime' => $mime,
+                //'mime' => $mime,
                 'extension' => $extension,
                 'size' => $size,
                 'public_path' => public_path(),
