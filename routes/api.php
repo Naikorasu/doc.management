@@ -43,4 +43,15 @@ Route::group([
         Route::get('profile', 'AuthController@profile');
     });
 
+
+
+    //file
+    Route::group([
+        'prefix' => 'file'
+    ], function () {
+        Route::post('upload','FileController@upload');
+        Route::post('list','FileController@list');
+
+    });
+
 });
