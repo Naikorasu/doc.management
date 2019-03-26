@@ -68,4 +68,19 @@ class FileController extends Controller
             ),
         ], 200);
     }
+
+    public function list(Request $request)
+    {
+        $user = $request->user();
+        $user_email = $user->email;
+
+        $data = File::where('email',$user_email)->paginate(20);
+
+        return response()->json([
+            'message' => "File List Loaded By $user_email.",
+            'result' => $data,
+        ], 200);
+    }
+
+
 }
